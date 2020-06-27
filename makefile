@@ -20,7 +20,7 @@ boot.o: boot.s
 
 # kernel.o: kernel.c
 # 	$(CC) -c kernel.c -o kernel.o $(CC_FLAGS)
-kernel.o: kernel.cpp
+kernel.o: vga.hpp kernel.cpp
 	$(CXX) $(CXX_INCLUDE_DIRS) -c kernel.cpp -o kernel.o $(CXX_FLAGS)
 
 myos.bin: boot.o kernel.o

@@ -7,11 +7,13 @@
 #error "This tutorial needs to be compiled with a ix86-elf compiler."
 #endif
 
-#include <vga_terminal.hpp>
+#include <vga.hpp>
 
 // We use C linkage to be able to call kernel_main in boot.s file.
 extern "C" void kernel_main() {
-  vga_terminal terminal{};
-  terminal << "Hello, C++ Kernel World!\nAnd welcome newline character." << '\n'
-           << "This was successful!\n";
+  vga::terminal terminal{};
+  terminal << "Hello, C++ Kernel World!\n"
+           << foreground(vga::COLOR::BLACK) << background(vga::COLOR::WHITE)
+           << "And welcome newline character." << '\n'
+           << foreground(vga::COLOR::RED) << "This was successful!\n";
 }
