@@ -1,5 +1,7 @@
 # Simple Operating System Kernel for x86 Systems
 
+32-bit Operating System Kernel for x86 architecture
+
 ## Requirements
 
 - [GCC Cross-Compiler](https://wiki.osdev.org/GCC_Cross_Compiler) for i686-elf

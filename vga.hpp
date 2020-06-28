@@ -46,8 +46,19 @@ struct terminal {
         buffer[index] = entry{};
       }
     }
+
+    const char text[] = "Terminal started.\n";
+    for (size_t i = 0; i < sizeof(text) - 1; ++i) putchar(text[i]);
+    for (size_t i = 0; i < width; ++i) putchar('-');
   }
-  ~terminal() {}
+  ~terminal() {
+    fg_color = COLOR::WHITE;
+    bg_color = COLOR::BLACK;
+    if (current_col != 0) putchar('\n');
+    for (size_t i = 0; i < width; ++i) putchar('-');
+    const char text[] = "Terminal ended.\n";
+    for (size_t i = 0; i < sizeof(text) - 1; ++i) putchar(text[i]);
+  }
 
   entry& operator()(size_t row, size_t col) {
     const size_t index = row * width + col;

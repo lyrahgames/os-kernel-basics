@@ -21,7 +21,12 @@ stack_top:
 .type _start, @function
 _start:
   mov $stack_top, %esp
+  call _init
   call kernel_main
+
+  push $0
+  call __cxa_finalize
+
   cli
 1:  hlt
   jmp 1b
